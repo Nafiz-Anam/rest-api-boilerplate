@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { Router, type Router as RouterType } from 'express';
 import { z } from 'zod';
 import { prisma } from '../../config/prisma';
@@ -148,7 +150,7 @@ router.post(
   authenticateJWT,
   validate(twoFactorSchemas.enable2FA),
   asyncHandler(async (req: any, res: any) => {
-    const { email, otp } = req.body;
+    const { otp } = req.body;
     const userId = req.user!.id;
 
     try {
@@ -216,8 +218,7 @@ router.post(
   authenticateJWT,
   validate(twoFactorSchemas.setup2FA),
   asyncHandler(async (req: any, res: any) => {
-    const { email } = req.body;
-    const userId = req.user!.id;
+    const userId = req.user?.id;
 
     try {
       // Get user info

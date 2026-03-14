@@ -1,7 +1,6 @@
 import { prisma } from '../config/prisma';
 import { Role, hasRole, hasPermission } from '../config/role';
 import * as bcryptjs from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
 import logger from '../config/logger';
 
 // User management service with optimized database operations
@@ -180,7 +179,7 @@ export class UserService {
   }
 
   // Resource ownership verification - generic and optimized
-  static async verifyResourceOwnership<T>(
+  static async verifyResourceOwnership(
     userId: string,
     resourceId: string,
     resourceModel: keyof typeof prisma,

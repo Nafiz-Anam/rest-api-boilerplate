@@ -92,7 +92,7 @@ router.post(
     // Verify current password
     const isValidPassword = await bcryptjs.compare(
       currentPassword,
-      user.password!
+      user.password || ''
     );
 
     if (!isValidPassword) {
@@ -195,9 +195,6 @@ router.get(
       skip: (Number(page) - 1) * Number(limit),
       take: Number(limit),
     });
-
-    // Get total count for pagination
-    const total = await prisma.user.count({ where });
 
     const pagination = await paginateResults(
       prisma.user,
