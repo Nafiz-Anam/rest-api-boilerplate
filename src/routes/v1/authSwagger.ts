@@ -3,16 +3,12 @@
  * Authentication routes for user management
  */
 
-import {Router} from 'express';
-import {z} from 'zod';
-import {prisma} from '../config/prisma';
-import {logger} from '../config/logger';
-import {authenticateJWT, authorize} from '../config/passport';
-import {validate} from '../utils/validation';
-import {paginateResults} from '../utils/pagination';
-import {asyncHandler} from '../utils/asyncHandler';
+import { Router } from 'express';
+import { prisma } from '../../config/prisma';
+import { authenticateJWT } from '../../config/passport';
+import { asyncHandler } from '../../utils/asyncHandler';
 
-const router = Router();
+const router: Router = Router();
 
 /**
  * @swagger
@@ -50,40 +46,40 @@ const router = Router();
  *         schema:
  *           $ref: '#/components/schemas/Error'
  */
-router.get('/profile', authenticateJWT, asyncHandler(async (req: any, res: any) => {
-
-  const user = await prisma.user.findUnique({
-    'where': {'id': req.user!.id},
-    'select': {
-      'id': true,
-      'email': true,
-      'username': true,
-      'firstName': true,
-      'lastName': true,
-      'avatar': true,
-      'role': true,
-      'isActive': true,
-      'createdAt': true,
-      'updatedAt': true
-    }
-  });
-
-  if (!user) {
-
-    return res.status(404).json({
-      'error': 'User not found',
-      'code': 'USER_NOT_FOUND'
+router.get(
+  '/profile',
+  authenticateJWT,
+  asyncHandler(async (req: any, res: any) => {
+    const user = await prisma.user.findUnique({
+      where: { id: req.user!.id },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        firstName: true,
+        lastName: true,
+        avatar: true,
+        role: true,
+        isActive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
 
-  }
+    if (!user) {
+      return res.status(404).json({
+        error: 'User not found',
+        code: 'USER_NOT_FOUND',
+      });
+    }
 
-  res.json({
-    'success': true,
-    'message': 'Profile retrieved successfully',
-    'data': {user}
-  });
-
-}));
+    res.json({
+      success: true,
+      message: 'Profile retrieved successfully',
+      data: { user },
+    });
+  })
+);
 
 /**
  * @swagger
@@ -144,11 +140,12 @@ router.get('/profile', authenticateJWT, asyncHandler(async (req: any, res: any) 
  *         schema:
  *           $ref: '#/components/schemas/Error'
  */
-router.post('/login', asyncHandler(async (req: any, res: any) => {
-
-  // Implementation would go here
-  res.json({'success': true, 'message': 'Login endpoint'});
-
-}));
+router.post(
+  '/login',
+  asyncHandler(async (req: any, res: any) => {
+    // Implementation would go here
+    res.json({ success: true, message: 'Login endpoint' });
+  })
+);
 
 export default router;

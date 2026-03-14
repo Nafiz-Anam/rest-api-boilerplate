@@ -1,18 +1,16 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { prisma } from '../config/prisma';
-import { logger } from '../config/logger';
+import { prisma } from '../../config/prisma';
+import logger from '../../config/logger';
 import {
-  authenticateToken,
   requirePermission,
-  requireRole,
   requireMinimumRole,
   AuthenticatedRequest,
-} from '../middleware/auth';
-import { Role, getAssignableRoles, canManageRole } from '../config/role';
-import { validate } from '../utils/validation';
-import { Router, type Router as RouterType } from 'express';
-import { asyncHandler } from '../utils/asyncHandler';
+} from '../../middleware/auth';
+import { Role, getAssignableRoles, canManageRole } from '../../config/role';
+import { validate } from '../../utils/validation';
+import { type Router as RouterType } from 'express';
+import { asyncHandler } from '../../utils/asyncHandler';
 
 const router: RouterType = Router();
 

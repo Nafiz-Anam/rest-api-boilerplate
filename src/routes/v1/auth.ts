@@ -4,21 +4,19 @@ import {
   authenticateGoogle,
   authenticateGitHub,
   authorize,
-} from '../config/passport';
-import { prisma } from '../config/prisma';
-import * as bcryptjs from 'bcryptjs';
+} from '../../config/passport';
+import { prisma } from '../../config/prisma';
 import * as jwt from 'jsonwebtoken';
-import { validationResult } from 'express-validator';
-import { validate, authSchemas } from '../validation';
-import { asyncHandler } from '../middleware/errorHandler';
-import logger from '../config/logger';
+import { validate, authSchemas } from '../../validation';
+import { asyncHandler } from '../../middleware/errorHandler';
+import logger from '../../config/logger';
 import {
   register,
   login,
   refreshToken,
   logout,
   getProfile,
-} from '../controllers/authController';
+} from '../../controllers/authController';
 
 const router = express.Router() as express.Router;
 
@@ -145,18 +143,5 @@ router.get(
     });
   })
 );
-
-// Helper functions
-function generateAccessToken(userId: string): string {
-  return (jwt as any).sign({ userId }, process.env.JWT_SECRET!, {
-    expiresIn: process.env.JWT_EXPIRES_IN || '7d',
-  });
-}
-
-function generateRefreshToken(userId: string): string {
-  return (jwt as any).sign({ userId }, process.env.JWT_REFRESH_SECRET!, {
-    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '30d',
-  });
-}
 
 export default router;

@@ -1,20 +1,15 @@
-import { Router, type Router as RouterType } from 'express';
+import { Router } from 'express';
 import { z } from 'zod';
-import { prisma } from '../config/prisma';
-import { logger } from '../config/logger';
+import { prisma } from '../../config/prisma';
+import logger from '../../config/logger';
+import { authenticateToken, requirePermission } from '../../middleware/auth';
 import {
-  authenticateToken,
-  requirePermission,
-  AuthenticatedRequest,
-} from '../middleware/auth';
-import {
-  getUserDevices,
   revokeSession,
   revokeAllSessions,
   cleanupExpiredSessions,
-} from '../utils/deviceManager';
-import { validate } from '../utils/validation';
-import { asyncHandler } from '../utils/asyncHandler';
+} from '../../utils/deviceManager';
+import { validate } from '../../utils/validation';
+import { asyncHandler } from '../../utils/asyncHandler';
 
 const router = Router();
 

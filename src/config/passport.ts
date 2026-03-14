@@ -1,3 +1,7 @@
+// Ensure environment variables are loaded
+import dotenv from 'dotenv';
+dotenv.config();
+
 import * as passport from 'passport';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { Strategy as LocalStrategy } from 'passport-local';
@@ -102,8 +106,8 @@ passport.use(
         return done(null, false, { message: 'Invalid credentials' });
       }
 
-      // Remove password from user object
-      const { password: _, ...userWithoutPassword } = user;
+      // Remove password from user object before returning
+      const { password, ...userWithoutPassword } = user;
 
       return done(null, userWithoutPassword);
     } catch (error) {
@@ -287,16 +291,12 @@ export const authorize = (roles: string[]) => {
 
 // Optional authentication middleware
 export const optionalAuth = (req: any, res: any, next: any) => {
-  passport.authenticate(
-    'jwt',
-    { session: false },
-    (err: any, user: any, info: any) => {
-      if (user) {
-        req.user = user;
-      }
-      next();
+  passport.authenticate('jwt', { session: false }, (err: any, user: any) => {
+    if (user) {
+      req.user = user;
     }
-  )(req, res, next);
+    next();
+  })(req, res, next);
 };
 
 export default passport;

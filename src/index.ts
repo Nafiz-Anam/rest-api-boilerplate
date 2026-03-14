@@ -1,22 +1,22 @@
-import express from 'express';
+import express, { type Express } from 'express';
 import { createServer } from 'http';
 import dotenv from 'dotenv';
 import compression from 'compression';
 import morgan from 'morgan';
 import passport from 'passport';
+import cors from 'cors';
+import { setTimeout } from 'timers';
 
 // Import configurations
 import { prisma } from './config/prisma';
-import { logger, httpLogger, logStream } from './config/logger';
+import logger, { logStream } from './config/logger';
 import sessionConfig from './config/session';
-import { authenticateJWT } from './config/passport';
 
 // Import middleware
 import {
   helmetConfig,
   corsOptions,
   rateLimiter,
-  authRateLimiter,
   securityHeaders,
 } from './middleware/security';
 import {
@@ -33,8 +33,6 @@ import { websocketService } from './services/websocket';
 import v1Routes from './routes/v1';
 
 // Load environment variables
-import express, { type Express } from 'express';
-import { createServer } from 'http';
 
 dotenv.config();
 
@@ -65,7 +63,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Logging middleware
 app.use(morgan('combined', { stream: logStream }));
-app.use(httpLogger);
 
 // Rate limiting
 app.use(rateLimiter);
@@ -174,7 +171,7 @@ process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
 
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 const startServer = async () => {
   try {

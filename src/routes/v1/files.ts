@@ -1,12 +1,12 @@
-import {Router} from 'express';
-import {authenticateToken} from '../middleware/auth';
-import {upload, validateFiles, processImage} from '../middleware/upload';
+import { Router } from 'express';
+import { authenticateToken } from '../../middleware/auth';
+import { upload, validateFiles, processImage } from '../../middleware/upload';
 import {
   uploadFile,
   uploadMultipleFiles,
   getUserFiles,
-  deleteFile
-} from '../controllers/fileController';
+  deleteFile,
+} from '../../controllers/fileController';
 
 const router = Router();
 
