@@ -1,0 +1,86 @@
+{
+  "source": {
+    "include": ["./src/**/*.ts"],
+    "exclude": ["./src/**/*.test.ts", "./src/**/*.spec.ts"]
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "./README.md",
+    "template": "node_modules/swagger-jsdoc/dist/template",
+    "swagger": {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "Production Ready REST API",
+        "version": "1.0.0",
+        "description": "A comprehensive, production-ready REST API boilerplate with authentication, real-time features, and comprehensive security",
+        "contact": {
+          "name": "API Support",
+          "email": "support@example.com",
+          "url": "https://github.com/your-repo/productionready-rest-api-boilerplate"
+        },
+        "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+        }
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000",
+          "description": "Development server"
+        },
+        {
+          "url": "https://your-domain.com",
+          "description": "Production server"
+        }
+      ],
+      "components": {
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "JWT access token for authentication"
+          }
+        }
+      },
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "tags": [
+        {
+          "name": "Authentication",
+          "description": "User authentication and authorization endpoints"
+        },
+        {
+          "name": "Users",
+          "description": "User management endpoints"
+        },
+        {
+          "name": "Posts",
+          "description": "Post management and content endpoints"
+        },
+        {
+          "name": "System",
+          "description": "System health and information endpoints"
+        }
+      ]
+    }
+  },
+  "plugins": [
+    "plugins/markdown",
+    "plugins/summarize"
+  ],
+  "templates": {
+    "clever": {
+      "outputSourceFiles": true,
+      "disableSourceFiles": false
+    }
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  }
+}

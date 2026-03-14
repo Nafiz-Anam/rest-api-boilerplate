@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "skills": {
+    "architecture-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "b92f11750a7cf9a6e5fa005ff72b0ae4f6aa45adc684193537d82ecb6e4eefd8"
+    },
+    "better-auth-security-best-practices": {
+      "source": "better-auth/skills",
+      "sourceType": "github",
+      "computedHash": "5717187bba9c22030c7174c74012f01c359f21e2ce87e0eb80e24244d8b8c915"
+    },
+    "clean-code": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "723e4955a7f12526cc4a182f085e41495bcbb8fae232e491e82e10926597624b"
+    },
+    "docker-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "76bd52d934142cb8f3861cb37f2a39ad93bf3b03dcbc94a02beaa0544f6dd7c2"
+    },
+    "express-typescript": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "356f5459a3ec3cddc3500f4c00039d61c8f950fb367d6f11495d7f5d41ea57e9"
+    },
+    "javascript-typescript-jest": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "0073d19ab0275eb6a8200aced6789a53744667bd717b5d1f44ce708a1740e5d4"
+    },
+    "logging-best-practices": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "computedHash": "3014f6c866622db4de48a1f4872b594b33b242017d5e75fbd595e1307eef6991"
+    },
+    "monitoring-observability": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "65abdcee441fa3710c077cbb7ef74d7843bd0163ba3551c27ebe7fdedbdd3953"
+    },
+    "postgresql-optimization": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "8022448de70ba9a485e3b5bce34c5bbc644f93eb39b68431c9f7dabcf03aeb09"
+    },
+    "prisma-cli": {
+      "source": "prisma/skills",
+      "sourceType": "github",
+      "computedHash": "500f80cfb0bebbaf7ef60645b43eb126e6489d6a1a2a592983c37a3ef8a789b5"
+    },
+    "redis-development": {
+      "source": "redis/agent-skills",
+      "sourceType": "github",
+      "computedHash": "d27174128aebe583d5ca15747389c84e286daed589bfa2b99847392a012719b5"
+    },
+    "security-best-practices": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "a8c825eb0f2d2d3381f93dad83ea531579445c5646b38be0170f4a782689cf4b"
+    },
+    "typescript-advanced-types": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "3a3be8c925f96ac4e1280db28a01677e7ca5197f3792de2bbf35ab3bb324b6dd"
+    },
+    "websocket-engineer": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "computedHash": "a498a3fb8345b1edff9634de603ccc33aa58f98374870d8504b672384a28513d"
+    },
+    "zod-schema-validation": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "f3fd474dfced1090e24af93eeabb3d85cd96e93e188cbbcc97202f5f85781b28"
+    }
+  }
+}
